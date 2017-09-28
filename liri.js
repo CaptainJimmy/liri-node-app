@@ -14,8 +14,25 @@ if (process.argv[4]) {
 //check to make sure there are arguments. if not, return syntax.
 if (!arg2) {
     console.log("No arguments detected.  Acceptable syntax is: [spotify artist|track 'search criteria'], [twitter screen_name], [movieinfo 'moviename'], [random]");
-} else {
+} 
+else {
+main(arg2,arg3,arg4);
 
+}
+
+
+function main(arg2,arg3,arg4){
+		//log this
+
+	    var fs = require("fs");
+	    var moment=require("moment");
+	    var timestamp=moment().format()
+
+	    	    fs.appendFile("output.txt",timestamp+","+arg2+","+arg3+","+arg4+'\n', function(err) {
+    		  if (err) {
+    				return console.log(err);
+  						};
+  					});
     switch (arg2) {
 
         case "twitter":
@@ -44,24 +61,18 @@ if (!arg2) {
         case "spotify":
             var search1;
             var search2;
-            console.log(arg3);
-            // if (arg3 !== "artist" && arg3 !== "track") {
-            //     console.log("Syntax Error: use proper syntax [spotify artist|track 'search criteria']. For example: spotify track 'Born to Run'");
-            //     return
-            // }
-            //making sure argument 3 exists else it will assign a default
-            if (!arg4) {
+            if (!arg3) {
+                "Invalid Syntax. Acceptable syntax is [spotify artist|track 'artist or track'], [twitter screen_name], [movieinfo 'moviename'], [random]"
+            }
+            // If No Search Term is given, one will be provided for you"
+            else if (!arg4) {
                 search1 = "track";
-                search2 = "Dirt on my boots";}
-         
-
-
-           else{ 
+                search2 = "Dirt on my boots";
+            } else {
 
                 search1 = arg3;
                 search2 = arg4;
             }
-            console.log("got here");
             getSpotify(search1, search2)
             break;
 
@@ -85,7 +96,7 @@ if (!arg2) {
 
         default:
             console.log("Invalid Syntax. Acceptable syntax is [spotify artist|track 'search criteria'], [twitter screen_name], [movieinfo 'moviename'], [random]");
-    
+
     }
 }
 
@@ -97,7 +108,6 @@ function getMovieInfo(movieName) {
         if (!error && response.statusCode === 200) {
 
             var movieData = JSON.parse(body);
-            // console.log(movieData);
             console.log(
                 "Rating: " + movieData.Rated + '\n',
                 "IMDB Rating: " + movieData.imdbRating + '\n',
@@ -107,7 +117,12 @@ function getMovieInfo(movieName) {
                 "DVD Date: " + movieData.DVD + '\n',
                 "Box Office: " + movieData.BoxOffice + '\n',
                 "Website: " + movieData.website + '\n',
-                "Awards: " + movieData.Awards + '\n'
+                "Awards: " + movieData.Awards + '\n',
+                "Directed By: " + movieData.Director + '\n',
+                "Genre: " + movieData.Genre + '\n',
+                "Runtime: " + movieData.Runtime + '\n',
+                "Language: " + movieData.Language + '\n',
+                "Country: " + movieData.Country + '\n'
             );
 
         }
@@ -115,89 +130,89 @@ function getMovieInfo(movieName) {
 }
 
 function getTweets(params) {
+    //Keys and Info
     var twitterkey = require("./keys.js");
     var Twitter = require('twitter');
     var client = new Twitter(twitterkey);
 
-
+    //poll from twitter
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
-            if (!error) {
-               // console.log("got here");
-               //tweets.forEach(function() {
-              for (var i = 0 ; i < tweets.length; i++){
-                    console.log(
-                    	"Created at: " + tweets[i].created_at + '\n',
-                    	"Created by: " + tweets[i].user.screen_name + '\n',
-                    	"Tweet: " + tweets[i].text);
-                    //fs.appendFile("output.txt", JSON.stringify(tweets,null,'\t'), function(err) {
-                        // if (err) {
-                        //     return console.log(err);
-                        // }
-                    //});
-                }
-               //});
+        if (!error) {
+            for (var i = 0; i < tweets.length; i++) {
+                console.log(
+                    "Created at: " + tweets[i].created_at + '\n',
+                    "Created by: " + tweets[i].user.screen_name + '\n',
+                    "Tweet: " + tweets[i].text);
             }
+        }
 
-            });
+    });
 
-    }
+}
 
-    function getSpotify(search1, search2) {
-        //console.log(search1 + "   " + search2);
-            var fs = require("fs");
+function getSpotify(search1, search2) {
 
-        var Spotify = require("node-spotify-api");
-        var spotify = new Spotify({
-            id: "544396b737244f97971b4ce32dc2c0ef",
-            secret: "728dade36f2a467288a6bb8356846475"
-        });
-        // seting up the search object, limitted to 5 returns
+    var Spotify = require("node-spotify-api");
+    var spotify = new Spotify({
+        id: "544396b737244f97971b4ce32dc2c0ef",
+        secret: "728dade36f2a467288a6bb8356846475"
+    });
+    // seting up the search object, limitted to 5 returns
 
-        spotify.search({
-            type: search1,
-            query: search2,
-            limit: 5
-        }, function(err, data) {
-            if (err) {
-                return console.log('Error occurred: ' + err);
-            }
-            //for (var i = 0 ; i < data.items.length ; i++){}
-            //set the correct data type based on search
+    spotify.search({
+        type: search1,
+        query: search2,
+        limit: 5
+    }, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
 
-            if (search1 === "track") {
-            	var dataReturn=data.tracks;
-            	  for (var i = 0 ; i < dataReturn.items.length ; i++){
+        //set the correct data type based on search
 
-            	  	console.log(
-            	  		"Item #" + i + '\n',
-            	  		"Artist: "+dataReturn.items[i].album.artists[0].name+'\n',
-            	  		"Album Name: "+dataReturn.items[i].album.name+'\n',
-            	  		"Track Name: "+dataReturn.items[i].name+'\n'
-            	  		);
-            	  	//console.log(dataReturn.items[i]);
+        if (search1 === "track") {
+            var dataReturn = data.tracks;
+            for (var i = 0; i < dataReturn.items.length; i++) {
 
-            		}
-            	}	
-            else  { 
-            	dataReturn = data.artists;
-   				// console.log(dataReturn.length);
-       //      	console.log(dataReturn.items.length);
-          		for (var i = 0 ; i < dataReturn.items.length ; i++){
-          			console.log(
-            	  		"Item #" + i + '\n',
-            	  		"Artist: "+dataReturn.items[i].name+'\n',
-            	  		"Popularity: "+dataReturn.items[i].popularity+'\n',
-            	  		"Genres: "+JSON.stringify(dataReturn.items[i].genres,'/[//g',null)+'\n'
-            	  		);
-          				}
+                console.log(
+                    "Item #" + i + '\n',
+                    "Artist: " + dataReturn.items[i].album.artists[0].name + '\n',
+                    "Album Name: " + dataReturn.items[i].album.name + '\n',
+                    "Track Name: " + dataReturn.items[i].name + '\n'
+                );
+                //console.log(dataReturn.items[i]);
 
             }
-    
-        });
-    };
+        } else {
+            dataReturn = data.artists;
+            // console.log(dataReturn.length);
+            //      	console.log(dataReturn.items.length);
+            for (var i = 0; i < dataReturn.items.length; i++) {
+                console.log(
+                    "Item #" + i + '\n',
+                    "Artist: " + dataReturn.items[i].name + '\n',
+                    "Popularity: " + dataReturn.items[i].popularity + '\n',
+                    "Genres: " + JSON.stringify(dataReturn.items[i].genres, '/[//g', null) + '\n'
+                );
+            }
 
+        }
 
-         			 // fs.writeFile("output.txt", JSON.stringify(dataReturn,null,'\t'), function(err) {
-             //            if (err) {
-             //                return console.log(err);
-             //            }
+    });
+};
+
+function doRandomStuff(){
+    var fs = require("fs");
+    fs.readFile("random.txt","utf8", function(err,data) {
+    		  if (err) {
+    				return console.log(err);
+  						};
+  		 var randomStuff = data.split("\n");
+  		 var randomIndex = Math.floor(Math.random()*randomStuff.length);
+  		 var randomTask = randomStuff[randomIndex].trim();
+ 		var newArgs=randomTask.split(",");
+ 		console.log(newArgs);
+ 		main(newArgs[0],newArgs[1],newArgs[2]);
+			});
+
+}
