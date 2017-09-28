@@ -1,3 +1,5 @@
+//prep the incoming arguments
+
 if (process.argv[2]) {
     var arg2 = process.argv[2].toLowerCase();
 };
@@ -11,7 +13,7 @@ if (process.argv[4]) {
 
 //check to make sure there are arguments. if not, return syntax.
 if (!arg2) {
-    console.log("No arguments detected.  Acceptable syntax is: [spotify artist|track 'search criteria'], [twitter screen_name], [movieinfo 'moviename'], [dostuff]");
+    console.log("No arguments detected.  Acceptable syntax is: [spotify artist|track 'search criteria'], [twitter screen_name], [movieinfo 'moviename'], [random]");
 } else {
 
     switch (arg2) {
@@ -76,14 +78,14 @@ if (!arg2) {
             break;
 
 
-        case "dorandomstuff":
-            console.log("foo");
-            //doRandomStuff();
+        case "random":
+            console.log("DOING RANDOM THINGS.  WARNING. RANDOM THINGS MAY HAPPEN.");
+            doRandomStuff();
             break;
 
         default:
-            console.log("foo2");
-            // doRandomStuff();
+            console.log("Invalid Syntax. Acceptable syntax is [spotify artist|track 'search criteria'], [twitter screen_name], [movieinfo 'moviename'], [random]");
+    
     }
 }
 
@@ -178,22 +180,17 @@ function getTweets(params) {
             	}	
             else  { 
             	dataReturn = data.artists;
-   				console.log(dataReturn.length);
-            	console.log(dataReturn.items.length);
-          		//for (var i = 0 ; i < dataReturn.items.length ; i++){
+   				// console.log(dataReturn.length);
+       //      	console.log(dataReturn.items.length);
+          		for (var i = 0 ; i < dataReturn.items.length ; i++){
+          			console.log(
+            	  		"Item #" + i + '\n',
+            	  		"Artist: "+dataReturn.items[i].name+'\n',
+            	  		"Popularity: "+dataReturn.items[i].popularity+'\n',
+            	  		"Genres: "+JSON.stringify(dataReturn.items[i].genres,'/[//g',null)+'\n'
+            	  		);
+          				}
 
-
-
-               
-            	//   for (var i = 0 ; i < dataReturn.items.length ; i++){
-
-            	//   	console.log(
-            	//   		"Item #" + i + '\n',
-            	//   		"Artist"
-
-
-            	//   		)
-            	//   }
             }
     
         });
