@@ -1,15 +1,14 @@
-var fs = require("fs");
-if (process.argv[2]){
-var arg2 = process.argv[2].toLowerCase();
+if (process.argv[2]) {
+    var arg2 = process.argv[2].toLowerCase();
 };
-if (process.argv[3]){
-	var arg3 = process.argv[3].toLowerCase();
+if (process.argv[3]) {
+    var arg3 = process.argv[3].toLowerCase();
 };
-if (process.argv[4]){
-var arg4 = process.argv[4].toLowerCase();
+if (process.argv[4]) {
+    var arg4 = process.argv[4].toLowerCase();
 };
-if (process.argv[5]){
-var arg5= process.argv[5].toLowerCase();
+if (process.argv[5]) {
+    var arg5 = process.argv[5].toLowerCase();
 };
 
 //check to make sure there are arguments. if not, return syntax.
@@ -25,14 +24,14 @@ if (!arg2) {
             if (!arg3) {
                 params = {
                     screen_name: 'engadget',
-                    count: 3,
-                    include_rts: 1
+                    count: 5,
+                    include_rts: 0
                 };
             } else {
                 params = {
                     screen_name: arg3,
-                    count: 3,
-                    include_rts: 1
+                    count: 5,
+                    include_rts: 0
 
                 }
             }
@@ -76,13 +75,13 @@ if (!arg2) {
 
 
         case "dorandomstuff":
-        console.log("foo");
+            console.log("foo");
             //doRandomStuff();
             break;
 
         default:
-        console.log("foo2");
-           // doRandomStuff();
+            console.log("foo2");
+            // doRandomStuff();
     }
 }
 
@@ -92,19 +91,19 @@ function getMovieInfo(movieName) {
     var request = require('request');
     request("http://www.omdbapi.com/?t=" + arg3 + "&y=&plot=short&apikey=40e9cece", function(error, response, body) {
         if (!error && response.statusCode === 200) {
-           
+
             var movieData = JSON.parse(body);
-           // console.log(movieData);
+            // console.log(movieData);
             console.log(
-            	"Rating: " + movieData.Rated+'\n',
-                "IMDB Rating: " + movieData.imdbRating+'\n',
-                "Year: " + movieData.Year+'\n',
-                "Plot: " + movieData.Plot+'\n',
-                "Actors: "+ movieData.Actors+'\n',
-                "DVD Date: "+ movieData.DVD+'\n',
-                "Box Office: " + movieData.BoxOffice+'\n',
-                "Website: " + movieData.website+'\n',
-                "Awards: " + movieData.Awards+'\n'
+                "Rating: " + movieData.Rated + '\n',
+                "IMDB Rating: " + movieData.imdbRating + '\n',
+                "Year: " + movieData.Year + '\n',
+                "Plot: " + movieData.Plot + '\n',
+                "Actors: " + movieData.Actors + '\n',
+                "DVD Date: " + movieData.DVD + '\n',
+                "Box Office: " + movieData.BoxOffice + '\n',
+                "Website: " + movieData.website + '\n',
+                "Awards: " + movieData.Awards + '\n'
             );
 
         }
@@ -112,35 +111,50 @@ function getMovieInfo(movieName) {
 }
 
 function getTweets(params) {
-	var twitterkey = require("./keys.js");
+    var twitterkey = require("./keys.js");
     var Twitter = require('twitter');
     var client = new Twitter(twitterkey);
+    var fs = require("fs");
+
 
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
-        if (!error) {
-            console.log(tweets);
-        }
-    });
+            if (!error) {
+               // console.log("got here");
+               //tweets.forEach(function() {
+              for (var i = 0 ; i < tweets.length; i++){
+                    console.log(
+                    	"Created at: " + tweets[i].created_at + '\n',
+                    	"Created by: " + tweets[i].user.screen_name + '\n',
+                    	"Tweet: " + tweets[i].text);
+                    //fs.appendFile("output.txt", JSON.stringify(tweets,null,'\t'), function(err) {
+                        // if (err) {
+                        //     return console.log(err);
+                        // }
+                    //});
+                }
+               //});
+            }
 
-}
+            });
 
-function getSpotify(search1, search2) {
-	console.log(search1+"   "+search2);
-    var Spotify = require("node-spotify-api");
-    var spotify = new Spotify({
-        id: "544396b737244f97971b4ce32dc2c0ef",
-        secret: "728dade36f2a467288a6bb8356846475"
-    });
+    }
 
-    spotify.search({
-        type: search1,
-        query: search2
-    }, function(err, data) {
-        if (err) {
-            return console.log('Error occurred: ' + err);
-        }
+    function getSpotify(search1, search2) {
+        console.log(search1 + "   " + search2);
+        var Spotify = require("node-spotify-api");
+        var spotify = new Spotify({
+            id: "544396b737244f97971b4ce32dc2c0ef",
+            secret: "728dade36f2a467288a6bb8356846475"
+        });
 
-        console.log(data);
-    });
-};
+        spotify.search({
+            type: search1,
+            query: search2
+        }, function(err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
 
+            console.log(data);
+        });
+    };
