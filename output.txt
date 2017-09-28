@@ -1,131 +1,181 @@
-[
-	{
-		"created_at": "Thu Sep 28 11:08:54 +0000 2017",
-		"id": 913359860733038600,
-		"id_str": "913359860733038592",
-		"text": "DoorDash adds group ordering to its food delivery app https://t.co/Pi6zNnqVzZ",
-		"truncated": false,
-		"entities": {
-			"hashtags": [],
-			"symbols": [],
-			"user_mentions": [],
-			"urls": [
-				{
-					"url": "https://t.co/Pi6zNnqVzZ",
-					"expanded_url": "http://engt.co/2k6qlzO",
-					"display_url": "engt.co/2k6qlzO",
-					"indices": [
-						54,
-						77
-					]
-				}
-			]
-		},
-		"source": "<a href=\"http://www.socialflow.com\" rel=\"nofollow\">SocialFlow</a>",
-		"in_reply_to_status_id": null,
-		"in_reply_to_status_id_str": null,
-		"in_reply_to_user_id": null,
-		"in_reply_to_user_id_str": null,
-		"in_reply_to_screen_name": null,
-		"user": {
-			"id": 14372486,
-			"id_str": "14372486",
-			"name": "Engadget",
-			"screen_name": "engadget",
-			"location": "Global",
-			"description": "Engadget is the original home for technology news and reviews.\nhttps://t.co/kN0hLNkYZr\nhttps://t.co/ny6jmBa8PM\nhttps://t.co/bTGWQeWuHO",
-			"url": "https://t.co/sPqsSwBKtx",
-			"entities": {
-				"url": {
-					"urls": [
-						{
-							"url": "https://t.co/sPqsSwBKtx",
-							"expanded_url": "http://www.engadget.com",
-							"display_url": "engadget.com",
-							"indices": [
-								0,
-								23
-							]
-						}
-					]
-				},
-				"description": {
-					"urls": [
-						{
-							"url": "https://t.co/kN0hLNkYZr",
-							"expanded_url": "http://facebook.com/engadget",
-							"display_url": "facebook.com/engadget",
-							"indices": [
-								63,
-								86
-							]
-						},
-						{
-							"url": "https://t.co/ny6jmBa8PM",
-							"expanded_url": "http://Instagram.com/Engadget",
-							"display_url": "Instagram.com/Engadget",
-							"indices": [
-								87,
-								110
-							]
-						},
-						{
-							"url": "https://t.co/bTGWQeWuHO",
-							"expanded_url": "http://snapchat.com/add/engadgetHQ",
-							"display_url": "snapchat.com/add/engadgetHQ",
-							"indices": [
-								111,
-								134
-							]
-						}
-					]
-				}
+{
+	"href": "https://api.spotify.com/v1/search?query=imagine&type=artist&offset=0&limit=5",
+	"items": [
+		{
+			"external_urls": {
+				"spotify": "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q"
 			},
-			"protected": false,
-			"followers_count": 2365195,
-			"friends_count": 282,
-			"listed_count": 50826,
-			"created_at": "Sun Apr 13 02:42:50 +0000 2008",
-			"favourites_count": 1344,
-			"utc_offset": -14400,
-			"time_zone": "Eastern Time (US & Canada)",
-			"geo_enabled": true,
-			"verified": true,
-			"statuses_count": 147680,
-			"lang": "en",
-			"contributors_enabled": false,
-			"is_translator": false,
-			"is_translation_enabled": false,
-			"profile_background_color": "000000",
-			"profile_background_image_url": "http://pbs.twimg.com/profile_background_images/436918710771519488/NWFDS8Aq.png",
-			"profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/436918710771519488/NWFDS8Aq.png",
-			"profile_background_tile": false,
-			"profile_image_url": "http://pbs.twimg.com/profile_images/655059892022022144/Pq3Q_1oU_normal.png",
-			"profile_image_url_https": "https://pbs.twimg.com/profile_images/655059892022022144/Pq3Q_1oU_normal.png",
-			"profile_banner_url": "https://pbs.twimg.com/profile_banners/14372486/1503441362",
-			"profile_link_color": "3B94D9",
-			"profile_sidebar_border_color": "FFFFFF",
-			"profile_sidebar_fill_color": "FFFFFF",
-			"profile_text_color": "373737",
-			"profile_use_background_image": false,
-			"has_extended_profile": false,
-			"default_profile": false,
-			"default_profile_image": false,
-			"following": true,
-			"follow_request_sent": false,
-			"notifications": false,
-			"translator_type": "regular"
+			"followers": {
+				"href": null,
+				"total": 5472302
+			},
+			"genres": [
+				"modern rock",
+				"pop",
+				"vegas indie"
+			],
+			"href": "https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q",
+			"id": "53XhwfbYqKCa1cC15pYq2q",
+			"images": [
+				{
+					"height": 640,
+					"url": "https://i.scdn.co/image/de3c2c4f4e822edab6fd8c2103102413502635ea",
+					"width": 640
+				},
+				{
+					"height": 320,
+					"url": "https://i.scdn.co/image/0242e9f3cdaeb9abd0c9724248213c8e364fc921",
+					"width": 320
+				},
+				{
+					"height": 160,
+					"url": "https://i.scdn.co/image/affb5c546adf0b6f718282528e56f24854026be1",
+					"width": 160
+				}
+			],
+			"name": "Imagine Dragons",
+			"popularity": 94,
+			"type": "artist",
+			"uri": "spotify:artist:53XhwfbYqKCa1cC15pYq2q"
 		},
-		"geo": null,
-		"coordinates": null,
-		"place": null,
-		"contributors": null,
-		"is_quote_status": false,
-		"retweet_count": 7,
-		"favorite_count": 5,
-		"favorited": false,
-		"retweeted": false,
-		"possibly_sensitive": false,
-		"lang": "en"
-	}
-]
+		{
+			"external_urls": {
+				"spotify": "https://open.spotify.com/artist/4SOk9hgrKvDv8pVI1iUZ8L"
+			},
+			"followers": {
+				"href": null,
+				"total": 1196
+			},
+			"genres": [
+				"epicore"
+			],
+			"href": "https://api.spotify.com/v1/artists/4SOk9hgrKvDv8pVI1iUZ8L",
+			"id": "4SOk9hgrKvDv8pVI1iUZ8L",
+			"images": [
+				{
+					"height": 640,
+					"url": "https://i.scdn.co/image/0e6e1e8636396c231f7ed3c35229cd1ede4b00f0",
+					"width": 640
+				},
+				{
+					"height": 300,
+					"url": "https://i.scdn.co/image/7cd81949bd21ebdd015012ca3d455db6e3f29945",
+					"width": 300
+				},
+				{
+					"height": 64,
+					"url": "https://i.scdn.co/image/2d622d81b1d022d74e65fa7a20b0effcf0c3a695",
+					"width": 64
+				}
+			],
+			"name": "Imagine Music",
+			"popularity": 36,
+			"type": "artist",
+			"uri": "spotify:artist:4SOk9hgrKvDv8pVI1iUZ8L"
+		},
+		{
+			"external_urls": {
+				"spotify": "https://open.spotify.com/artist/0ajeO3Uh8ffXQmkTRV64sM"
+			},
+			"followers": {
+				"href": null,
+				"total": 255
+			},
+			"genres": [],
+			"href": "https://api.spotify.com/v1/artists/0ajeO3Uh8ffXQmkTRV64sM",
+			"id": "0ajeO3Uh8ffXQmkTRV64sM",
+			"images": [
+				{
+					"height": 640,
+					"url": "https://i.scdn.co/image/e78aabfb6c9c81d9df2afc80a7f41f61a4f1dde9",
+					"width": 640
+				},
+				{
+					"height": 300,
+					"url": "https://i.scdn.co/image/18c52e7e7456316bb8cb5c1359d60c5a6d317c80",
+					"width": 300
+				},
+				{
+					"height": 64,
+					"url": "https://i.scdn.co/image/abb0e5b32a13247f6190495603551432d8f9b214",
+					"width": 64
+				}
+			],
+			"name": "Imagine",
+			"popularity": 18,
+			"type": "artist",
+			"uri": "spotify:artist:0ajeO3Uh8ffXQmkTRV64sM"
+		},
+		{
+			"external_urls": {
+				"spotify": "https://open.spotify.com/artist/50d4g0jrhxA39axHizCcc1"
+			},
+			"followers": {
+				"href": null,
+				"total": 3178
+			},
+			"genres": [],
+			"href": "https://api.spotify.com/v1/artists/50d4g0jrhxA39axHizCcc1",
+			"id": "50d4g0jrhxA39axHizCcc1",
+			"images": [
+				{
+					"height": 640,
+					"url": "https://i.scdn.co/image/bded1f378b0dda75da8b16be17b98bebae35cbaf",
+					"width": 640
+				},
+				{
+					"height": 300,
+					"url": "https://i.scdn.co/image/181563de490d9791d4e870a2402a10a2ee417543",
+					"width": 300
+				},
+				{
+					"height": 64,
+					"url": "https://i.scdn.co/image/521b087f885097b52503c375b9f1cb8b0ea95879",
+					"width": 64
+				}
+			],
+			"name": "Imagine Demons",
+			"popularity": 31,
+			"type": "artist",
+			"uri": "spotify:artist:50d4g0jrhxA39axHizCcc1"
+		},
+		{
+			"external_urls": {
+				"spotify": "https://open.spotify.com/artist/2GZIkd7QPKtg5c3alf8rYt"
+			},
+			"followers": {
+				"href": null,
+				"total": 616
+			},
+			"genres": [],
+			"href": "https://api.spotify.com/v1/artists/2GZIkd7QPKtg5c3alf8rYt",
+			"id": "2GZIkd7QPKtg5c3alf8rYt",
+			"images": [
+				{
+					"height": 640,
+					"url": "https://i.scdn.co/image/0a6ee69bb968d142f5bf6070528b5f4ce5cd9276",
+					"width": 640
+				},
+				{
+					"height": 300,
+					"url": "https://i.scdn.co/image/228dfeef5e3e885b2f7d9245d8524da6cb63316f",
+					"width": 300
+				},
+				{
+					"height": 64,
+					"url": "https://i.scdn.co/image/bfb36bb0b9c8ffb643f22fad0bdc7869492aacea",
+					"width": 64
+				}
+			],
+			"name": "Jade Imagine",
+			"popularity": 28,
+			"type": "artist",
+			"uri": "spotify:artist:2GZIkd7QPKtg5c3alf8rYt"
+		}
+	],
+	"limit": 5,
+	"next": "https://api.spotify.com/v1/search?query=imagine&type=artist&offset=5&limit=5",
+	"offset": 0,
+	"previous": null,
+	"total": 48
+}

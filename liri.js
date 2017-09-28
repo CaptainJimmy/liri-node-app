@@ -7,9 +7,7 @@ if (process.argv[3]) {
 if (process.argv[4]) {
     var arg4 = process.argv[4].toLowerCase();
 };
-if (process.argv[5]) {
-    var arg5 = process.argv[5].toLowerCase();
-};
+
 
 //check to make sure there are arguments. if not, return syntax.
 if (!arg2) {
@@ -52,10 +50,14 @@ if (!arg2) {
             //making sure argument 3 exists else it will assign a default
             if (!arg4) {
                 search1 = "track";
-                search2 = "Dirt on my boots";
-            } else {
-                search1 = arg4;
-                search2 = arg5;
+                search2 = "Dirt on my boots";}
+         
+
+
+           else{ 
+
+                search1 = arg3;
+                search2 = arg4;
             }
             console.log("got here");
             getSpotify(search1, search2)
@@ -114,7 +116,6 @@ function getTweets(params) {
     var twitterkey = require("./keys.js");
     var Twitter = require('twitter');
     var client = new Twitter(twitterkey);
-    var fs = require("fs");
 
 
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
@@ -140,21 +141,66 @@ function getTweets(params) {
     }
 
     function getSpotify(search1, search2) {
-        console.log(search1 + "   " + search2);
+        //console.log(search1 + "   " + search2);
+            var fs = require("fs");
+
         var Spotify = require("node-spotify-api");
         var spotify = new Spotify({
             id: "544396b737244f97971b4ce32dc2c0ef",
             secret: "728dade36f2a467288a6bb8356846475"
         });
+        // seting up the search object, limitted to 5 returns
 
         spotify.search({
             type: search1,
-            query: search2
+            query: search2,
+            limit: 5
         }, function(err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             }
+            //for (var i = 0 ; i < data.items.length ; i++){}
+            //set the correct data type based on search
 
-            console.log(data);
+            if (search1 === "track") {
+            	var dataReturn=data.tracks;
+            	  for (var i = 0 ; i < dataReturn.items.length ; i++){
+
+            	  	console.log(
+            	  		"Item #" + i + '\n',
+            	  		"Artist: "+dataReturn.items[i].album.artists[0].name+'\n',
+            	  		"Album Name: "+dataReturn.items[i].album.name+'\n',
+            	  		"Track Name: "+dataReturn.items[i].name+'\n'
+            	  		);
+            	  	//console.log(dataReturn.items[i]);
+
+            		}
+            	}	
+            else  { 
+            	dataReturn = data.artists;
+   				console.log(dataReturn.length);
+            	console.log(dataReturn.items.length);
+          		//for (var i = 0 ; i < dataReturn.items.length ; i++){
+
+
+
+               
+            	//   for (var i = 0 ; i < dataReturn.items.length ; i++){
+
+            	//   	console.log(
+            	//   		"Item #" + i + '\n',
+            	//   		"Artist"
+
+
+            	//   		)
+            	//   }
+            }
+    
         });
     };
+
+
+         			 // fs.writeFile("output.txt", JSON.stringify(dataReturn,null,'\t'), function(err) {
+             //            if (err) {
+             //                return console.log(err);
+             //            }
