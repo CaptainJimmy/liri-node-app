@@ -18,6 +18,8 @@ Commands:
 
 *random* Pulls randomly from a textfile with entries in it, and calls the above APIs
 
+Also logs each API call to and a timestamp to a logfile, _output.txt_
+
 ## Technologies Used:
 * Node.js
 * JavaScript
