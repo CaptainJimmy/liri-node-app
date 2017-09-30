@@ -41,8 +41,8 @@
         return console.log(err);
       }
     });
-
-    switch (arg2) {
+     switch (arg2) {
+       //call the UI
       case "ui":
         getUI();
         break;
@@ -269,12 +269,9 @@
       console.log(answer);
       switch (answer.appChoice) {
         case "spotify":
-          console.log("spot 1");
           inquirer.prompt(appQuestions.spotifyArtistOrTrackQuestion).then(function(answer) {
               if (answer.spotifyArtistOrTrackChoice.toLowerCase()==="artist" ) {
-                console.log("spot 2 ");
                 inquirer.prompt(appQuestions.spotifyArtistQuestion).then(function(answer) {
-                  console.log("spot3");
                   getSpotify("artist", answer.artistChoice);
                 });
               }
@@ -301,14 +298,19 @@
 
             case "movieinfo":
               inquirer.prompt(appQuestions.movieQuestion).then(function(answer) {
-                getMovieInfo(answer.movieChoice);
+
+                //NOT WORKING
+              //  getMovieInfo(answer.movieChoice).then(getUI());
+              // WORKING
+               getMovieInfo(answer.movieChoice);
               });
               break;
 
             case "random":
+              //NOT WORKING
+              //doRandomStuff().then(function(){ getUI(); });
+              //WORKING
               doRandomStuff();
-
-              break;
           }
       })
     }
