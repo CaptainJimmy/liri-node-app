@@ -298,7 +298,6 @@
 
             case "movieinfo":
               inquirer.prompt(appQuestions.movieQuestion).then(function(answer) {
-
                 //NOT WORKING
               //  getMovieInfo(answer.movieChoice).then(getUI());
               // WORKING
